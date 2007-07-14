@@ -1,7 +1,7 @@
 %define	name	xchm
 %define version	1.13
 %define docversion 1.10
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 %define	Summary	CHM viewer for UNIX
 
@@ -19,7 +19,7 @@ Source3:	%name-32.png
 Source4:	%name-48.png
 BuildRequires:	libchm-devel
 BuildRequires:	libtiff
-BuildRequires:	wxGTK2.6-devel
+BuildRequires:	wxgtku2.6-devel
 BuildRequires:	ghostscript
 Buildrequires:	tetex-latex
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -31,7 +31,7 @@ xCHM - the CHM viewer for UNIX
 %setup -q -a 1
 
 %build
-%configure --with-wx-config=%{_bindir}/wx-config-ansi
+%configure --with-wx-config=%{_bindir}/wx-config-unicode
 %make
 
 %install
