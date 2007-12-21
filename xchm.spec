@@ -22,6 +22,7 @@ BuildRequires:	libtiff
 BuildRequires:	wxgtku2.6-devel
 BuildRequires:	ghostscript
 Buildrequires:	tetex-latex
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 xCHM - the CHM viewer for UNIX
