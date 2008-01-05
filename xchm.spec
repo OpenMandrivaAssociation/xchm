@@ -1,7 +1,7 @@
 %define	name	xchm
-%define version	1.13
+%define version	1.14
 %define docversion 1.10
-%define	release	%mkrel 4
+%define	release	%mkrel 1
 
 %define	Summary	CHM viewer for UNIX
 
@@ -9,10 +9,10 @@ Name:		%name
 Version:	%version
 Release:	%release
 Summary:	%Summary
-License:	GPL
+License:	GPLv2+
 Group:		Publishing
 URL:		http://xchm.sourceforge.net
-Source:		%name-%version.tar.bz2
+Source:		http://ovh.dl.sourceforge.net/sourceforge/xchm/%name-%version.tar.gz
 Source1:	%name-%docversion-doc.tar.bz2
 Source2:	%name-16.png
 Source3:	%name-32.png
@@ -31,7 +31,7 @@ xCHM - the CHM viewer for UNIX
 %setup -q -a 1
 
 %build
-%configure --with-wx-config=%{_bindir}/wx-config-unicode
+%configure2_5x --with-wx-config=%{_bindir}/wx-config-unicode
 %make
 
 %install
