@@ -1,7 +1,7 @@
 %define	name	xchm
 %define version	1.14
 %define docversion 1.10
-%define	release	%mkrel 1
+%define	release	%mkrel 3
 
 %define	Summary	CHM viewer for UNIX
 
