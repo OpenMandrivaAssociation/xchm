@@ -1,7 +1,7 @@
 %define	name	xchm
 %define version	1.14
 %define docversion 1.10
-%define	release	%mkrel 4
+%define	release	%mkrel 5
 
 %define	Summary	CHM viewer for UNIX
 
@@ -19,7 +19,7 @@ Source3:	%name-32.png
 Source4:	%name-48.png
 BuildRequires:	libchm-devel
 BuildRequires:	libtiff
-BuildRequires:	wxgtku2.6-devel
+BuildRequires:	wxgtku-devel
 BuildRequires:	ghostscript
 Buildrequires:	tetex-latex
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -38,10 +38,10 @@ xCHM - the CHM viewer for UNIX
 rm -rf %buildroot
 %makeinstall_std
 
-mkdir -p %buildroot{%_miconsdir,%_iconsdir,%_liconsdir}
-%__install -m 644 %SOURCE2 %buildroot%_miconsdir/%name.png
-%__install -m 644 %SOURCE3 %buildroot%_iconsdir/%name.png
-%__install -m 644 %SOURCE4 %buildroot%_liconsdir/%name.png
+mkdir -p %buildroot%_iconsdir/hicolor/{16x16,32x32,48x48}/apps
+%__install -m 644 %SOURCE2 %buildroot%_iconsdir/hicolor/16x16/apps/%name.png
+%__install -m 644 %SOURCE3 %buildroot%_iconsdir/hicolor/32x32/apps/%name.png
+%__install -m 644 %SOURCE4 %buildroot%_iconsdir/hicolor/48x48/apps/%name.png
 
 mkdir -p %buildroot%{_datadir}/applications
 cat > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -83,8 +83,6 @@ rm -fr $RPM_BUILD_ROOT
 %doc %name-%docversion-doc/html
 %doc %name-%docversion-doc/latex/*.dvi
 %_bindir/%name
-%_liconsdir/%name.png
-%_iconsdir/%name.png
-%_miconsdir/%name.png
+%_iconsdir/hicolor/*/apps/%name.png
 %_datadir/pixmaps/*.xpm
 %_datadir/applications/*.desktop
