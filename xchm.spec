@@ -1,5 +1,5 @@
 %define	name	xchm
-%define version	1.16
+%define version	1.17
 %define docversion 1.10
 %define	release	%mkrel 1
 
