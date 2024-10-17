@@ -11,7 +11,7 @@ Release:	%release
 Summary:	%Summary
 License:	GPLv2+
 Group:		Publishing
-URL:		http://xchm.sourceforge.net
+URL:		https://xchm.sourceforge.net
 Source:		http://ovh.dl.sourceforge.net/sourceforge/xchm/%name-%version.tar.gz
 Source1:	%name-%docversion-doc.tar.bz2
 Source2:	%name-16.png
