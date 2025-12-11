@@ -1,88 +1,41 @@
-%define	name	xchm
-%define version	1.17
-%define docversion 1.10
-%define	release	%mkrel 1
-
-%define	Summary	CHM viewer for UNIX
-
-Name:		%name
-Version:	%version
-Release:	%release
-Summary:	%Summary
+Name:		xchm
+Version:	1.37
+Release:	1
+Summary:	CHM viewer for UNIX
 License:	GPLv2+
 Group:		Publishing
 URL:		https://xchm.sourceforge.net
-Source:		http://ovh.dl.sourceforge.net/sourceforge/xchm/%name-%version.tar.gz
-Source1:	%name-%docversion-doc.tar.bz2
-Source2:	%name-16.png
-Source3:	%name-32.png
-Source4:	%name-48.png
-BuildRequires:	libchm-devel
-BuildRequires:	libtiff
-BuildRequires:	wxgtku-devel
-BuildRequires:	ghostscript
-Buildrequires:	tetex-latex
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+Source0:	https://github.com/rzvncj/xCHM/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:	xchm-1.37-link.patch
+BuildRequires:	autoconf automake slibtool
+BuildRequires:	zstd
+BuildRequires:	chmlib-devel
+BuildRequires:	libwxgtk3.2-devel
 
 %description
 xCHM - the CHM viewer for UNIX
 
 %prep
-%setup -q -a 1
+%autosetup -p1
+
+%conf
+%configure --with-wx-config=%{_bindir}/wx-config-3.2
 
 %build
-%configure2_5x --with-wx-config=%{_bindir}/wx-config-unicode
-%make
+%make_build
 
 %install
-rm -rf %buildroot
-%makeinstall_std
-
-mkdir -p %buildroot%_iconsdir/hicolor/{16x16,32x32,48x48}/apps
-%__install -m 644 %SOURCE2 %buildroot%_iconsdir/hicolor/16x16/apps/%name.png
-%__install -m 644 %SOURCE3 %buildroot%_iconsdir/hicolor/32x32/apps/%name.png
-%__install -m 644 %SOURCE4 %buildroot%_iconsdir/hicolor/48x48/apps/%name.png
-
-mkdir -p %buildroot%{_datadir}/applications
-cat > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=Xchm
-Comment=CHM viewer for UNIX
-Exec=xchm
-Icon=xchm
-Type=Application
-Categories=GTK;Office;Viewer;
-EOF
-
-(
-cd %name-%docversion-doc/latex/
-make
-)
-
-# Doc are install elsewhere
-rm -fr %buildroot/%_datadir/doc
+%make_install
 
 %find_lang %name
-
-%clean
-rm -fr $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
 
 %files -f %name.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README
-%doc %name-%docversion-doc/html
-%doc %name-%docversion-doc/latex/*.dvi
-%_bindir/%name
-%_iconsdir/hicolor/*/apps/%name.png
-%_datadir/pixmaps/*.xpm
-%_datadir/applications/*.desktop
+%license COPYING
+%{_bindir}/%{name}
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}doc.png
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/metainfo/xchm.appdata.xml
+%{_mandir}/man1/xchm.1.zst

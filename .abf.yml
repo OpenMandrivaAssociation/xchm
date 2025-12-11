@@ -1,6 +1,2 @@
 sources:
-  "xchm-1.10-doc.tar.bz2:"	68b636dbb53f68811a2207e698f29ae4a9a17a12
-  "xchm-1.17.tar.gz:"	0f29f204ee002586c0d61c631e36d52bed94eabf
-  "xchm-16.png:"	5c626f48e2476dfd32660492e93910912ad463ac
-  "xchm-32.png:"	c0ad18af279c15a0cfcf337e2abebdd40c0cf1fb
-  "xchm-48.png:"	e5fc77c15336330e8eea6e4fb76b3e4735b5db38
+  xchm-1.37.tar.gz: adb630066c02e74f0bcacf6765f54b5a0f7887ba
