@@ -8,6 +8,7 @@ URL:		https://xchm.sourceforge.net
 Source0:	https://github.com/rzvncj/xCHM/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:	xchm-1.37-link.patch
 BuildRequires:	autoconf automake slibtool
+BuildRequires:	libtool-base
 BuildRequires:	zstd
 BuildRequires:	chmlib-devel
 BuildRequires:	libwxgtk3.2-devel
