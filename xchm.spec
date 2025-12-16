@@ -9,6 +9,7 @@ Source0:	https://github.com/rzvncj/xCHM/releases/download/%{version}/%{name}-%{v
 Patch0:	xchm-1.37-link.patch
 BuildRequires:	autoconf automake slibtool
 BuildRequires:	libtool-base
+BuildRequires:	make
 BuildRequires:	zstd
 BuildRequires:	chmlib-devel
 BuildRequires:	libwxgtk3.2-devel
